@@ -154,8 +154,8 @@ function NotebookDetailsPage() {
                 const config = { headers: { Authorization: `Bearer ${token}` } };
 
                 const [notebooksResponse, tasksResponse] = await Promise.all([
-                    axios.get('${process.env.REACT_APP_API_BASE_URL}/task-notebook/', config),
-                    axios.get('${process.env.REACT_APP_API_BASE_URL}/task/', config)
+                    axios.get('https://labirinto-do-saber.vercel.app/task-notebook/', config),
+                    axios.get('https://labirinto-do-saber.vercel.app/task/', config)
                 ]);
                 
                 if (Array.isArray(tasksResponse.data)) {
@@ -238,7 +238,7 @@ function NotebookDetailsPage() {
             // CENÁRIO 1: Caderno Vazio -> Deletar Caderno
             if (remainingGroups.length === 0) {
                 await axios.delete(
-                    `${process.env.REACT_APP_API_BASE_URL}/task-notebook/delete/${notebookId}`,
+                    `https://labirinto-do-saber.vercel.app/task-notebook/delete/${notebookId}`,
                     config
                 );
 
@@ -258,7 +258,7 @@ function NotebookDetailsPage() {
                 };
 
                 await axios.put(
-                    '${process.env.REACT_APP_API_BASE_URL}/task-notebook/update',
+                    'https://labirinto-do-saber.vercel.app/task-notebook/update',
                     payload,
                     config
                 );

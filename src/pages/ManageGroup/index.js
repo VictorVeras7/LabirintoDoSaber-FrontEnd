@@ -75,8 +75,8 @@ function ManageGroupPage() {
                 }
                 const config = { headers: { Authorization: `Bearer ${token}` } };
                 const [groupsResponse, tasksResponse] = await Promise.all([
-                    axios.get("${process.env.REACT_APP_API_BASE_URL}/task-group/list-by-educator", config),
-                    axios.get("${process.env.REACT_APP_API_BASE_URL}/task/", config)
+                    axios.get("https://labirinto-do-saber.vercel.app/task-group/list-by-educator", config),
+                    axios.get("https://labirinto-do-saber.vercel.app/task/", config)
                 ]);
 
                 if (Array.isArray(groupsResponse.data)) setGroups(groupsResponse.data);
@@ -146,7 +146,7 @@ function ManageGroupPage() {
         try {
             // CASO 1: Deletar Grupo Inteiro
             if (deleteTarget.type === 'GROUP') {
-                await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/task-group/delete/${deleteTarget.id}`, config);
+                await axios.delete(`https://labirinto-do-saber.vercel.app/task-group/delete/${deleteTarget.id}`, config);
                 setGroups(groups.filter(group => group.id !== deleteTarget.id));
             } 
             // CASO 2: Remover Atividade de dentro do Grupo
@@ -156,7 +156,7 @@ function ManageGroupPage() {
 
                 // Se não sobrou nenhuma atividade -> Deleta o grupo
                 if (newTaskIds.length === 0) {
-                    await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/task-group/delete/${selectedGroup.id}`, config);
+                    await axios.delete(`https://labirinto-do-saber.vercel.app/task-group/delete/${selectedGroup.id}`, config);
                     setGroups(groups.filter(g => g.id !== selectedGroup.id));
                     setIsGroupModalOpen(false);
                     setSelectedGroup(null);
@@ -167,7 +167,7 @@ function ManageGroupPage() {
                         id: selectedGroup.id,
                         tasksIds: newTaskIds
                     };
-                    await axios.put('${process.env.REACT_APP_API_BASE_URL}/task-group/update', payload, config);
+                    await axios.put('https://labirinto-do-saber.vercel.app/task-group/update', payload, config);
 
                     const updatedGroup = { ...selectedGroup, tasksIds: newTaskIds };
                     setSelectedGroup(updatedGroup);

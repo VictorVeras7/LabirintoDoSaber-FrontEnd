@@ -115,7 +115,7 @@ function SessionActivitiesPage() {
         };
 
         const response = await axios.get(
-          "${process.env.REACT_APP_API_BASE_URL}/task",
+          "https://labirinto-do-saber.vercel.app/task",
           config
         );
 
@@ -176,7 +176,7 @@ function SessionActivitiesPage() {
 
       // 3. Chamada POST para a rota CORRETA
       const response = await axios.post(
-        "${process.env.REACT_APP_API_BASE_URL}/task-notebook-session/start", 
+        "https://labirinto-do-saber.vercel.app/task-notebook-session/start", 
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },

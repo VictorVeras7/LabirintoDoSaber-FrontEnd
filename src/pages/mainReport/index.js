@@ -34,7 +34,7 @@ function MainReport() {
                 };
 
                 const response = await axios.get(
-                    "${process.env.REACT_APP_API_BASE_URL}/student/",
+                    "https://labirinto-do-saber.vercel.app/student/",
                     config
                 );
 
