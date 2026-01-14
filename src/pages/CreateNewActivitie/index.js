@@ -40,8 +40,6 @@ function AdicionarAtividade() {
             return;
         }
 
-        // --- MUDANÇA AQUI: Navegar para a página nova enviando os dados ---
-        // Certifique-se que a rota '/NewActivitiePersonalize' existe no seu Router
         navigate('/NewActivitiePersonalize', { 
             state: { 
                 selectedCategory: selectedCategory,
