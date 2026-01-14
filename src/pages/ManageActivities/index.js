@@ -79,7 +79,7 @@ function ManageActivitiesPage() {
         headers: { Authorization: `Bearer ${token}` }
       };
 
-      const response = await axios.get('${process.env.REACT_APP_API_BASE_URL}/task/', config);
+      const response = await axios.get('https://labirinto-do-saber.vercel.app/task/', config);
       
       if (Array.isArray(response.data)) {
         setActivities(response.data);
@@ -109,7 +109,7 @@ function ManageActivitiesPage() {
         headers: { Authorization: `Bearer ${token}` }
       };
 
-      await axios.delete(`${process.env.REACT_APP_API_BASE_URL}/task/delete/${activityToDelete}`, config);
+      await axios.delete(`https://labirinto-do-saber.vercel.app/task/delete/${activityToDelete}`, config);
       
       setActivities(activities.filter(act => act.id !== activityToDelete));
       setIsModalOpen(false);
